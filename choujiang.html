@@ -1,0 +1,100 @@
+<html>
+
+<head>
+        
+    <meta charset="UTF-8">
+        <title>抽奖</title>
+        <style type="text/css">
+        body{
+            background-color:#130f40;
+        }
+        input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        .choujiang{
+            font-size: 70px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: aquamarine;
+        }
+        .xuanze{
+            font-size: 30px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .start-button {
+            width: 270px;
+            height: 40px;
+            border-width: 0px;
+            border-radius: 3px;
+            background: #1E90FF;
+            cursor: pointer;
+            outline: none;
+            font-family: Microsoft YaHei;
+            color: white;
+            font-size: 17px;
+           
+        }
+
+        .start-button:hover {
+            /* 鼠标移入按钮范围时改变颜色 */
+            background: #184d9c;
+        }
+    </style>
+     
+    <script type="text/javascript">
+        var run = false;
+        var qishi;
+        var jieshu;
+        var beishu;
+        function go(){
+            qishi= document.getElementById("from_choujiang").value;
+            jieshu = document.getElementById("to_choujiang").value;
+            document.getElementById("zimu").innerHTML = document.getElementById("jiangxiang").value;
+            beishu = jieshu - qishi + 1;
+        }
+        function count() {
+            var guodu = parseInt(Math.random() * beishu)
+            num.innerHTML = parseInt(guodu) + parseInt(qishi);
+        }
+        
+        function a() {
+            if (true == run) {
+                clearInterval(timerID);
+                start.value = "开始";
+                run = false;
+            } else if (false == run) {
+                timerID = setInterval("count()", 10);
+                start.value = "暂停";
+                run = true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="choujiang" style="font-size: 250px;">
+        <font id="zimu" face="impact" color="#eb4d4b">A</font>
+        <font id="num" face="impact" color="#eb4d4b">100</font>
+        <div></div>
+        <input class="start-button" type="button" id="start" value="开始抽奖" onclick="a()" />
+    </div>
+    <form class="xuanze" action="#">
+        <label for="lang" style="color: aquamarine;">奖项</label>
+        <input type="text" id="jiangxiang" name="jiangxiang" required minlength="" required maxlength="2" size="1"/>
+        <label for="lang" style="color: aquamarine;">范围</label>
+        <input type="number" id="from_choujiang" required minlength="" required maxlength="2" size="1"/>
+        <label for="lang" style="color: aquamarine;">到</label>
+        <input type="number" id="to_choujiang" required minlength="" required maxlength="2" size="1"/>
+        <input id="transmit" type="button" value="确定设置" onclick="go()"/>
+    </form>
+  
+
+</body>
+
+</html>
